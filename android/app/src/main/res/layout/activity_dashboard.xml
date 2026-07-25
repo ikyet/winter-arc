@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@color/card"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pantalla Principal"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/card"
+                android:padding="16dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resumen del día"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvCaloriasResumen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calorías quemadas: 0" />
+                <TextView
+                    android:id="@+id/tvComidasResumen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comidas realizadas: 0" />
+                <TextView
+                    android:id="@+id/tvEntrenamientoResumen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entrenamiento: No realizado" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:orientation="vertical"
+                android:clickable="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alimentación" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardTraining"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:orientation="vertical"
+                android:clickable="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entrenamiento" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardProgress"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:orientation="vertical"
+                android:clickable="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seguimiento Diario" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvMensajeMotivacional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+                <TextView
+                    android:id="@+id/navHome"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Inicio" />
+                <TextView
+                    android:id="@+id/navTraining"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Entrenamiento" />
+                <!-- NOTA: navNutrition y navConfig no aparecían de forma explícita en el texto
+                     extraído del reporte (el bloque "Código" se cortó tras navTraining), pero
+                     DashboardActivity.java hace findViewById(R.id.navNutrition) y
+                     findViewById(R.id.navConfig), y el contenedor usa android:weightSum="4"
+                     (implica 4 hijos). Se reconstruyeron por patrón con los dos elementos
+                     anteriores; verificar textos/orden reales contra el proyecto original. -->
+                <TextView
+                    android:id="@+id/navNutrition"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Nutrición" />
+                <TextView
+                    android:id="@+id/navConfig"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Configuración" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

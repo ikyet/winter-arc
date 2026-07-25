@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.winterarc.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.winterarc.app"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core:1.13.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.12.0'
+
+    // Networking (usado en todas las Activities que hablan con winter_arc_api)
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation 'org.json:json:20240303'
+
+    // Imágenes (ExerciseDetailActivity)
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+
+    // Reproductor de video de ejercicios (ExerciseDetailActivity)
+    implementation 'com.github.PierfrancescoSoffritti.android-youtube-player:core:12.1.0'
+
+    // Gráficas de progreso (DailyTrackingActivity)
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // Google Fit (DailyTrackingActivity / GoogleFitManager)
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+    implementation 'com.google.android.gms:play-services-fitness:21.1.0'
+}

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  NOTA DE RECONSTRUCCIÓN (ver notas_extraccion_parte4.md): el contenido original que un agente
+  previo había guardado bajo este nombre de archivo (bloque de texto "Interfaz de configuración
+  de perfil físico": etEdad, etPeso, etEstatura, tvSexo, tvActividad, tvDias, tvObjetivo,
+  tvProteinas, tvCarbohidratos, tvGrasas, btnRegistrarPerfil) NO correspondía a ConfigActivity.java
+  (probablemente pertenece a UserProfileActivity, fuera de este alcance). Ese contenido se movió
+  a notas_extraccion_parte1.md/parte4.md para no perderlo.
+
+  Este archivo se reconstruyó desde cero usando ÚNICAMENTE los IDs que ConfigActivity.java
+  realmente consume vía findViewById(): btnModo, btnCerrarSesion, btnFuentes,
+  btnModificarAlimentos, editPeso.
+
+  El estilo visual (fondo negro, tarjetas #111111, título blanco 28sp bold, EditText de peso con
+  fondo #1F1F1F/hint #777777, botones con backgroundTint #2A2A2A y texto blanco, botón de cerrar
+  sesión en rojo #D32F2F a todo el ancho) se tomó de la descripción textual de la sección 3.3 del
+  reporte, apartado "CONFIGURACION" (línea ~490): "La pantalla configuracion utiliza un
+  ScrollView con fondo #000000 y margen interno de 24dp; ... secciones en tarjetas con fondo
+  #111111, padding de 20dp ... El título principal usa texto blanco (#FFFFFF), tamaño 28sp y
+  estilo bold. La sección para modificar peso incluye un EditText con fondo #1F1F1F, texto
+  blanco, hint #777777, padding 12dp y entrada numberDecimal ... botones ... backgroundTint
+  "#2A2A2A" ... El botón final de cerrar sesión ... usa color de fondo #D32F2F, texto blanco y
+  padding 14dp."
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Configuración"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Sección: registrar/actualizar peso -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#111111"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginBottom="24dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Peso actual"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+            <EditText
+                android:id="@+id/editPeso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1F1F1F"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#777777"
+                android:hint="Ingresa tu peso (kg)"
+                android:inputType="numberDecimal"
+                android:padding="12dp"/>
+        </LinearLayout>
+
+        <!-- Sección: alimentos no deseados -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#111111"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginBottom="24dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alimentos no deseados"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+            <Button
+                android:id="@+id/btnModificarAlimentos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Modificar alimentos"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#2A2A2A"/>
+        </LinearLayout>
+
+        <!-- Sección: apariencia -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#111111"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginBottom="24dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apariencia"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+            <Button
+                android:id="@+id/btnModo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Modo oscuro"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#2A2A2A"/>
+        </LinearLayout>
+
+        <!-- Sección: bibliografía / fuentes -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#111111"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginBottom="24dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bibliografía y fuentes"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+            <Button
+                android:id="@+id/btnFuentes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ver fuentes"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#2A2A2A"/>
+        </LinearLayout>
+
+        <!-- Cerrar sesión -->
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D32F2F"
+            android:padding="14dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  NOTA DE RECONSTRUCCIÓN: este archivo corresponde al bloque de texto titulado "Interfaz del
+  módulo de dieta" ("Mi Dieta": tvCalorias, tvMacros, llComidas). El nombre de archivo
+  activity_actualizacion_dieta.xml fue asignado siguiendo la instrucción de la tarea, pero el
+  código de ActualizacionDietaActivity.java realmente invoca
+  setContentView(R.layout.activity_actualizacion_dieta_manager) y usa IDs totalmente distintos
+  (tvCaloriasActuales, tvCaloriasNuevas, tvProteinas, tvCarbohidratos, tvGrasas, tvNotificacion,
+  btnAceptar, btnRechazar). Es decir, este XML en realidad pertenece a otra pantalla (muy
+  probablemente "DietActivity", fuera del alcance de este agente) y NO al layout real de
+  ActualizacionDietaActivity, el cual no apareció en el rango de reporte cubierto aquí.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mi Dieta"
+            android:textColor="@color/text"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card"
+            android:padding="16dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvCalorias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calorías del Día: 0 kcal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvMacros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Carbohidratos 0g • Proteínas 0g • Grasas 0g"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comidas del Día"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:id="@+id/llComidas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </LinearLayout>
+</ScrollView>

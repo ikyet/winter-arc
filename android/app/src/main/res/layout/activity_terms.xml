@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Reconstruido a partir de la descripción de diseño de la sección 3.3 del reporte
+  ("MODULO CREAR CUENTA / TERMINOS Y CONDICIONES"): ScrollView blanco #FFFFFF, padding 24dp,
+  título centrado "Términos y Condiciones" 26sp negro negrita, texto legal 14sp gris #333333,
+  CheckBox "Acepto los términos y condiciones", botón fondo gris claro #D9D9D9 texto negro.
+  A diferencia del resto de la app (tema oscuro), esta pantalla es explícitamente clara según
+  el reporte, por eso usa colores literales en vez de @color/bg-oscuro.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Términos y Condiciones"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:lineSpacingExtra="4dp"
+            android:text="Winter Arc es un prototipo desarrollado con fines académicos. La información nutricional y de entrenamiento generada por la aplicación es orientativa y no sustituye la consulta con un profesional de la salud. El uso de la aplicación es responsabilidad del usuario, quien debe evaluar su condición física antes de iniciar cualquier rutina de entrenamiento o plan alimenticio." />
+
+        <CheckBox
+            android:id="@+id/cbAceptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acepto los términos y condiciones"
+            android:textColor="#000000"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btnContinuar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Continuar"
+            android:textColor="#000000"
+            android:backgroundTint="#D9D9D9" />
+
+    </LinearLayout>
+</ScrollView>

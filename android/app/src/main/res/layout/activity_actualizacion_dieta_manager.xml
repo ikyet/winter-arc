@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  NOTA DE RECONSTRUCCIÓN (ver notas_extraccion_parte4.md): archivo nuevo, creado en esta sesión.
+
+  ActualizacionDietaActivity.java llama a setContentView(R.layout.activity_actualizacion_dieta_manager)
+  y usa vía findViewById() los IDs: tvCaloriasActuales, tvCaloriasNuevas, tvProteinas,
+  tvCarbohidratos, tvGrasas, tvNotificacion, btnAceptar, btnRechazar. El archivo
+  activity_actualizacion_dieta.xml ya existente en este directorio pertenece a otra pantalla
+  ("Mi Dieta" / DietActivity, según notas_extraccion_parte1.md) y NO se modificó ni se borró.
+
+  El estilo (fondo negro, tarjeta con calorías/macros, mensaje de notificación temporal, botones
+  aceptar/rechazar) sigue el mismo lenguaje visual oscuro usado en el resto de la app y la
+  descripción del módulo "ACTUALIZACION DE DIETA" del reporte (~línea 346-358): el sistema
+  ajusta automáticamente la dieta y "muestra el mensaje de aceptar o rechazar la actualización de
+  dieta"; la notificación de confirmación "aparece en pantalla durante 3 segundos" (implementado
+  en ActualizacionDietaActivity.java con Handler().postDelayed(...,3000)). No hay un bloque
+  "Interfaz de..." explícito en el reporte para esta pantalla en particular, así que la
+  disposición de los elementos es una inferencia razonable, no una recuperación literal.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Actualización de Dieta"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Tarjeta: calorías actuales vs. sugeridas -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#111111"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:id="@+id/tvCaloriasActuales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calorías actuales: 0 kcal"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tvCaloriasNuevas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calorías sugeridas: 0 kcal"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+        <!-- Tarjeta: macronutrientes sugeridos -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#111111"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nueva distribución de macronutrientes"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/tvProteinas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Proteínas: 0 g"
+                android:textColor="#9A9A9A"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/tvCarbohidratos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Carbohidratos: 0 g"
+                android:textColor="#9A9A9A"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"/>
+            <TextView
+                android:id="@+id/tvGrasas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grasas: 0 g"
+                android:textColor="#9A9A9A"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- Botones aceptar / rechazar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+            <Button
+                android:id="@+id/btnAceptar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Aceptar"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#1E88E5"/>
+            <Button
+                android:id="@+id/btnRechazar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Rechazar"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#2A2A2A"/>
+        </LinearLayout>
+
+        <!-- Notificación temporal (3s) al aceptar -->
+        <TextView
+            android:id="@+id/tvNotificacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dieta actualizada"
+            android:textColor="#00FF66"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingTop="15dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</ScrollView>

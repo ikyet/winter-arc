@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  NOTA (histórica): DailyTrackingActivity.java también referencia (findViewById) los IDs
+  tvMetaPasos y progressPasos, pero ningún fragmento "Código" del reporte, dentro del rango
+  asignado al agente original, mostró esos elementos dentro de este layout.
+
+  ACTUALIZACIÓN (sesión posterior, ver notas_extraccion_parte4.md): se agregaron tvMetaPasos
+  (TextView) y progressPasos (ProgressBar) dentro del mismo bloque "card" que ya contenía
+  tvCaloriasTracking y tvPasos, siguiendo el mismo estilo visual (color @color/text, 14sp) que
+  el resto de los elementos de este archivo, y la descripción textual del reporte para la
+  pantalla "Seguimiento diario" (línea ~479: "El bloque de pasos mantiene la misma estructura
+  con dos TextView para pasos y meta"). No hay un fragmento Java/Swift explícito que muestre la
+  posición exacta de progressPasos; se ubicó justo debajo de tvMetaPasos como barra de progreso
+  horizontal estándar de Android, inferencia razonable no confirmada contra el reporte.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:chart="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <TextView
+            android:text="Seguimiento Diario"
+            android:textColor="@color/text"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:id="@+id/tvCaloriasTracking"
+                android:text="Cargando..."
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvPasos"
+                android:text="Pasos: 0"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvMetaPasos"
+                android:text="Meta: 0 pasos"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ProgressBar
+                android:id="@+id/progressPasos"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="0"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieCalorias"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginBottom="20dp"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barPeso"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:layout_marginBottom="24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <TextView
+                android:text="Registrar Peso"
+                android:textColor="@color/text"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/etPeso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingresa tu peso (kg)"
+                android:inputType="numberDecimal"/>
+            <Button
+                android:id="@+id/btnGuardarPeso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardar Seguimiento"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta oscura descrita en la sección 3.3 del reporte (mockups de pantallas) -->
+    <color name="bg">#000000</color>
+    <color name="card">#1A1A1A</color>
+    <color name="text">#FFFFFF</color>
+    <color name="text_secondary">#BBBBBB</color>
+    <color name="accent">#1E88E5</color>
+    <color name="button">#2A2A2A</color>
+    <color name="error">#D32F2F</color>
+    <color name="success">#00FF66</color>
+</resources>

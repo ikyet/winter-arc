@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Reconstruido a partir de la descripción de diseño de la sección 3.3 del reporte ("DIETA"):
+  fondo negro, título "Mi Dieta" en blanco, tarjeta de calorías, subtítulo "Comidas del Día".
+  El único id confirmado contra el código real (DietActivity.java) es llComidas: las tarjetas
+  de cada comida (desayuno/comida/cena) se generan dinámicamente en tiempo de ejecución mediante
+  crearSeccion(), no están declaradas aquí de forma estática.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mi Dieta"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/text"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comidas del Día"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/text"
+            android:layout_marginBottom="15dp" />
+
+        <LinearLayout
+            android:id="@+id/llComidas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+</ScrollView>

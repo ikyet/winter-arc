@@ -1,0 +1,16 @@
+# Android Studio / Gradle
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+android/app/build/
+android/build/
+
+# Gradle wrapper jar se agrega al abrir el proyecto en Android Studio
+gradle-wrapper.jar
