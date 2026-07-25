@@ -1,20 +1,31 @@
 package com.winterarc.app;
 
-// NOTA DE RECONSTRUCCIÓN: esta clase no aparece en ningún punto del reporte (ni su código Java ni
-// una descripción de diseño en la sección 3.3), a diferencia de DietActivity/GoogleFitManager/
-// UserProfileActivity, cuyo contenido sí estaba presente pero mal atribuido. Solo se sabe que
-// existe porque ExerciseListActivity.java la invoca con los extras "nombre", "series", "descanso".
-// Por eso este archivo es un placeholder mínimo y honesto (solo muestra esos datos), NO una
-// reconstrucción del comportamiento real (que probablemente incluía temporizador de descanso,
-// registro de series completadas, etc.). TODO: reemplazar con la lógica real si se recupera el
-// proyecto original o el diseño de esta pantalla.
+// NOTA DE RECONSTRUCCIÓN: a diferencia de otras clases de este proyecto, ExerciseInProgressActivity
+// NO aparece en ningún punto del reporte — ni como código Java, ni como código Swift equivalente,
+// ni como descripción de diseño en la sección 3.3. Solo se sabe que existe porque
+// ExerciseListActivity.java la invoca con los extras "nombre" (String), "series" (int) y
+// "descanso" (int, segundos). Como no hay NADA que recuperar o portar, esta es una implementación
+// funcional NUEVA (no una reconstrucción), pensada para cumplir el propósito evidente de una
+// pantalla de "ejercicio en progreso": un temporizador de descanso entre series y un contador de
+// series completadas. Revisar/ajustar si se recupera el diseño original.
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ExerciseInProgressActivity extends AppCompatActivity {
+
+    TextView tvNombre, tvSeries, tvTemporizador;
+    Button btnSerieCompletada;
+
+    int totalSeries;
+    int descansoSegundos;
+    int seriesCompletadas = 0;
+    CountDownTimer temporizador;
+    boolean descansando = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +33,58 @@ public class ExerciseInProgressActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exercise_in_progress);
 
         String nombre = getIntent().getStringExtra("nombre");
-        int series = getIntent().getIntExtra("series", 0);
-        int descanso = getIntent().getIntExtra("descanso", 0);
+        totalSeries = getIntent().getIntExtra("series", 0);
+        descansoSegundos = getIntent().getIntExtra("descanso", 60);
 
-        TextView tvInfo = findViewById(R.id.tvInfo);
-        tvInfo.setText(nombre + "\nSeries: " + series + "\nDescanso: " + descanso + "s");
+        tvNombre = findViewById(R.id.tvNombre);
+        tvSeries = findViewById(R.id.tvSeries);
+        tvTemporizador = findViewById(R.id.tvTemporizador);
+        btnSerieCompletada = findViewById(R.id.btnSerieCompletada);
+
+        tvNombre.setText(nombre);
+        actualizarContadorSeries();
+
+        btnSerieCompletada.setOnClickListener(v -> {
+            if (descansando) return;
+            seriesCompletadas++;
+            actualizarContadorSeries();
+            if (seriesCompletadas >= totalSeries) {
+                tvTemporizador.setText("¡Ejercicio completado!");
+                btnSerieCompletada.setEnabled(false);
+            } else {
+                iniciarDescanso();
+            }
+        });
+    }
+
+    private void actualizarContadorSeries() {
+        tvSeries.setText("Serie " + Math.min(seriesCompletadas + 1, totalSeries) + " de " + totalSeries);
+    }
+
+    private void iniciarDescanso() {
+        descansando = true;
+        btnSerieCompletada.setEnabled(false);
+        temporizador = new CountDownTimer(descansoSegundos * 1000L, 1000) {
+            @Override
+            public void onTick(long millisRestantes) {
+                tvTemporizador.setText("Descanso: " + (millisRestantes / 1000) + "s");
+            }
+
+            @Override
+            public void onFinish() {
+                tvTemporizador.setText("¡Listo para la siguiente serie!");
+                descansando = false;
+                btnSerieCompletada.setEnabled(true);
+            }
+        };
+        temporizador.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (temporizador != null) {
+            temporizador.cancel();
+        }
     }
 }

@@ -59,5 +59,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"/>
+
+        <Button
+            android:id="@+id/btnFinalizarRutina"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:text="Finalizar rutina"
+            android:textColor="@color/text"
+            android:textSize="18sp"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/accent"/>
     </LinearLayout>
 </ScrollView>

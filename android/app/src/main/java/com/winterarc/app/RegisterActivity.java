@@ -59,7 +59,11 @@ public class RegisterActivity extends AppCompatActivity {
             mostrarError("Ingresa un correo válido");
             return;
         }
-        if (!password.matches("^(?=.[A-Z])(?=.\d).{8,}$")) {
+        // FIX: el reporte traía "^(?=.[A-Z])(?=.\d).{8,}$", una regex inválida como literal Java
+        // (\d sin escapar no compila) y semánticamente incorrecta (sin "*" no exige realmente una
+        // mayúscula/dígito en cualquier posición). El propio mensaje de error de abajo confirma la
+        // intención: mínimo 8 caracteres, una mayúscula y un número. Corregido a la forma estándar.
+        if (!password.matches("^(?=.*[A-Z])(?=.*\\d).{8,}$")) {
             mostrarError(
                     "La contraseña debe tener mínimo 8 caracteres, una mayúscula y un número"
             );
