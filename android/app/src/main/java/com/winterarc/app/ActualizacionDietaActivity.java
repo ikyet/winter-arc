@@ -8,10 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-// NOTA: ActualizacionDietaManager (con su clase anidada DietaActualizada y el método estático
-// actualizarDieta(...)) es referenciada por este archivo pero NO fue creada por este agente:
-// contiene lógica de negocio real (cálculo de dieta) que no aparece en el rango del reporte
-// asignado, y la tarea pide no inventar lógica nueva. Debe localizarse/reconstruirse aparte.
+// NOTA: ActualizacionDietaManager fue reconstruida en ActualizacionDietaManager.java aplicando
+// la metodología nutricional documentada en el capítulo 2.2 del reporte (no había código fuente
+// real que recuperar). Ver el comentario de cabecera de esa clase para el detalle completo.
 
 public class ActualizacionDietaActivity extends AppCompatActivity {
 

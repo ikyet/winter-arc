@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'com.winterarc.app'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.winterarc.app"
         minSdk 24
-        targetSdk 34
+        targetSdk 36
         versionCode 1
         versionName "1.0"
     }
@@ -40,10 +40,12 @@ dependencies {
     // Imágenes (ExerciseDetailActivity)
     implementation 'com.github.bumptech.glide:glide:4.16.0'
 
-    // Reproductor de video de ejercicios (ExerciseDetailActivity)
-    implementation 'com.github.PierfrancescoSoffritti.android-youtube-player:core:12.1.0'
+    // Reproductor de video de ejercicios (ExerciseDetailActivity) — publicado en Maven Central,
+    // no en JitPack (el groupId correcto es com.pierfrancescosoffritti.androidyoutubeplayer,
+    // coincide con los imports usados en ExerciseDetailActivity.java)
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'
 
-    // Gráficas de progreso (DailyTrackingActivity)
+    // Gráficas de progreso (DailyTrackingActivity) — sí está en JitPack
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     // Google Fit (DailyTrackingActivity / GoogleFitManager)
